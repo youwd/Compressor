@@ -1,0 +1,16 @@
+2021/3/23 17:29:11开始压缩视频：
+2021/3/23 17:29:11正在压缩视频：E:\project\视频图片压缩\data\1-1-1-1-InitVideo.mp4
+2021/3/23 17:29:12完成压缩视频：E:\project\视频图片压缩\data\1-1-1-1-InitVideo.mp4
+2021/3/23 17:29:12正在压缩视频：E:\project\视频图片压缩\data\1-1-1-InitVideo.mp4
+2021/3/23 17:29:12完成压缩视频：E:\project\视频图片压缩\data\1-1-1-InitVideo.mp4
+2021/3/23 17:29:12正在压缩视频：E:\project\视频图片压缩\data\1-1-InitVideo.mp4
+2021/3/23 17:29:13完成压缩视频：E:\project\视频图片压缩\data\1-1-InitVideo.mp4
+2021/3/23 17:29:13正在压缩视频：E:\project\视频图片压缩\data\1-InitVideo.mp4
+2021/3/23 17:29:14完成压缩视频：E:\project\视频图片压缩\data\1-InitVideo.mp4
+2021/3/23 17:29:14正在压缩视频：E:\project\视频图片压缩\data\1-Y3702040053-Y3700002395.avi
+2021/3/23 17:29:33完成压缩视频：E:\project\视频图片压缩\data\1-Y3702040053-Y3700002395.avi
+2021/3/23 17:29:33正在压缩视频：E:\project\视频图片压缩\data\1.mp4
+2021/3/23 17:29:34完成压缩视频：E:\project\视频图片压缩\data\1.mp4
+2021/3/23 17:29:34正在压缩视频：E:\project\视频图片压缩\data\InitVideo.mp4
+2021/3/23 17:29:35完成压缩视频：E:\project\视频图片压缩\data\InitVideo.mp4
+2021/3/23 17:29:35正在压缩视频：E:\project\视频图片压缩\data\Y3702040053-Y3700002395.avi

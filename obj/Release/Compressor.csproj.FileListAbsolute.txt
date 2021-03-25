@@ -1,0 +1,10 @@
+E:\project\视频图片压缩\Compressor\bin\Release\Compressor.exe.config
+E:\project\视频图片压缩\Compressor\bin\Release\Compressor.exe
+E:\project\视频图片压缩\Compressor\bin\Release\Compressor.pdb
+E:\project\视频图片压缩\Compressor\obj\Release\Compressor.csprojAssemblyReference.cache
+E:\project\视频图片压缩\Compressor\obj\Release\Compressor.Form1.resources
+E:\project\视频图片压缩\Compressor\obj\Release\Compressor.Properties.Resources.resources
+E:\project\视频图片压缩\Compressor\obj\Release\Compressor.csproj.GenerateResource.cache
+E:\project\视频图片压缩\Compressor\obj\Release\Compressor.csproj.CoreCompileInputs.cache
+E:\project\视频图片压缩\Compressor\obj\Release\Compressor.exe
+E:\project\视频图片压缩\Compressor\obj\Release\Compressor.pdb
