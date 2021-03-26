@@ -29,7 +29,7 @@ namespace Compressor
         /// </summary>
         private void InitializeComponent()
         {
-            this.start = new System.Windows.Forms.Button();
+            this.ButtonStart = new System.Windows.Forms.Button();
             this.labelCatalog = new System.Windows.Forms.Label();
             this.buttonOpenCatalog = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -41,21 +41,24 @@ namespace Compressor
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxProcessor = new System.Windows.Forms.ComboBox();
-            this.checkBoxGPU = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxMinSize = new System.Windows.Forms.TextBox();
+            this.textBoxMaxSize = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // start
+            // ButtonStart
             // 
-            this.start.Location = new System.Drawing.Point(687, 779);
-            this.start.Name = "start";
-            this.start.Size = new System.Drawing.Size(147, 51);
-            this.start.TabIndex = 0;
-            this.start.Text = "开始";
-            this.start.UseVisualStyleBackColor = true;
-            this.start.Click += new System.EventHandler(this.start_Click);
+            this.ButtonStart.Location = new System.Drawing.Point(698, 767);
+            this.ButtonStart.Name = "ButtonStart";
+            this.ButtonStart.Size = new System.Drawing.Size(147, 51);
+            this.ButtonStart.TabIndex = 0;
+            this.ButtonStart.Text = "开始";
+            this.ButtonStart.UseVisualStyleBackColor = true;
+            this.ButtonStart.Click += new System.EventHandler(this.start_Click);
             // 
             // labelCatalog
             // 
@@ -136,7 +139,7 @@ namespace Compressor
             // labelMessage
             // 
             this.labelMessage.AutoSize = true;
-            this.labelMessage.Location = new System.Drawing.Point(29, 672);
+            this.labelMessage.Location = new System.Drawing.Point(25, 730);
             this.labelMessage.Name = "labelMessage";
             this.labelMessage.Size = new System.Drawing.Size(130, 24);
             this.labelMessage.TabIndex = 4;
@@ -144,15 +147,15 @@ namespace Compressor
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(33, 719);
+            this.progressBar1.Location = new System.Drawing.Point(29, 773);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(801, 35);
+            this.progressBar1.Size = new System.Drawing.Size(637, 45);
             this.progressBar1.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 792);
+            this.label1.Location = new System.Drawing.Point(29, 688);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(106, 24);
             this.label1.TabIndex = 6;
@@ -161,27 +164,56 @@ namespace Compressor
             // comboBoxProcessor
             // 
             this.comboBoxProcessor.FormattingEnabled = true;
-            this.comboBoxProcessor.Location = new System.Drawing.Point(145, 787);
+            this.comboBoxProcessor.Location = new System.Drawing.Point(125, 681);
             this.comboBoxProcessor.Name = "comboBoxProcessor";
             this.comboBoxProcessor.Size = new System.Drawing.Size(121, 32);
             this.comboBoxProcessor.TabIndex = 7;
             // 
-            // checkBoxGPU
+            // label2
             // 
-            this.checkBoxGPU.AutoSize = true;
-            this.checkBoxGPU.Location = new System.Drawing.Point(331, 791);
-            this.checkBoxGPU.Name = "checkBoxGPU";
-            this.checkBoxGPU.Size = new System.Drawing.Size(174, 28);
-            this.checkBoxGPU.TabIndex = 8;
-            this.checkBoxGPU.Text = "是否使用GPU";
-            this.checkBoxGPU.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(381, 688);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(214, 24);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "文件大小范围(M)：";
+            // 
+            // textBoxMinSize
+            // 
+            this.textBoxMinSize.Location = new System.Drawing.Point(586, 681);
+            this.textBoxMinSize.Name = "textBoxMinSize";
+            this.textBoxMinSize.Size = new System.Drawing.Size(100, 35);
+            this.textBoxMinSize.TabIndex = 10;
+            this.textBoxMinSize.TextChanged += new System.EventHandler(this.textBoxSize_TextChanged);
+            this.textBoxMinSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumber_KeyPress);
+            // 
+            // textBoxMaxSize
+            // 
+            this.textBoxMaxSize.Location = new System.Drawing.Point(730, 681);
+            this.textBoxMaxSize.Name = "textBoxMaxSize";
+            this.textBoxMaxSize.Size = new System.Drawing.Size(100, 35);
+            this.textBoxMaxSize.TabIndex = 11;
+            this.textBoxMaxSize.TextChanged += new System.EventHandler(this.textBoxSize_TextChanged);
+            this.textBoxMaxSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumber_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(698, 686);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(22, 24);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "-";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(872, 862);
-            this.Controls.Add(this.checkBoxGPU);
+            this.ClientSize = new System.Drawing.Size(864, 846);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textBoxMaxSize);
+            this.Controls.Add(this.textBoxMinSize);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxProcessor);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBar1);
@@ -189,13 +221,12 @@ namespace Compressor
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.buttonOpenCatalog);
             this.Controls.Add(this.labelCatalog);
-            this.Controls.Add(this.start);
+            this.Controls.Add(this.ButtonStart);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "视频图片压缩器";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -207,7 +238,7 @@ namespace Compressor
 
         #endregion
 
-        private System.Windows.Forms.Button start;
+        private System.Windows.Forms.Button ButtonStart;
         private System.Windows.Forms.Label labelCatalog;
         private System.Windows.Forms.Button buttonOpenCatalog;
         private System.Windows.Forms.TabControl tabControl1;
@@ -219,7 +250,10 @@ namespace Compressor
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxProcessor;
-        private System.Windows.Forms.CheckBox checkBoxGPU;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxMinSize;
+        private System.Windows.Forms.TextBox textBoxMaxSize;
+        private System.Windows.Forms.Label label3;
     }
 }
 

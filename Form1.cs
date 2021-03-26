@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
@@ -11,6 +12,8 @@ namespace Compressor
         string appPath = AppDomain.CurrentDomain.BaseDirectory;
         string resultCatalog;
         string logCatalog;
+        List<string> videoList = new List<string>();
+
         Process p = new Process();
         public Form1()
         {
@@ -66,15 +69,17 @@ namespace Compressor
                     continue;
                 }
 
-                if (IsVideo(file))
-                {
-                    listBoxVideo.Items.Add(file);
-                }
-                else if (IsImage(file))
+                if (IsImage(file))
                 {
                     listBoxImage.Items.Add(file);
+                } 
+                else if (IsVideo(file))
+                {
+                    videoList.Add(file);
                 }
             }
+
+            filterVideoList();
         }
 
         /// <summary>
@@ -101,9 +106,12 @@ namespace Compressor
 
             FileStream log = new FileStream(logCatalog + GetTimeStamp() + ".txt", FileMode.Create, FileAccess.Write);//创建写入文件 
             sw = new StreamWriter(log);
-
             sw.WriteLine(DateTime.Now + "开始压缩视频：");//开始写入值
             sw.Flush();
+
+            ButtonStart.Text = "处理中..";
+            ButtonStart.Enabled = false;
+
             progressBar1.Value = 0;
             progressBar1.Step = 100 / count;
             progressBar1.PerformStep();
@@ -112,7 +120,8 @@ namespace Compressor
 
             foreach (var item in listBoxVideo.Items)
             {
-                labelMessage.Text = "正在处理：" + item.ToString() + " ...";
+                
+                labelMessage.Text = "正在处理：" + Path.GetFileName(item.ToString()) + " ...";
                 sw.WriteLine(DateTime.Now + "正在压缩视频：" + item.ToString());
                 sw.Flush();
                 try
@@ -143,7 +152,7 @@ namespace Compressor
             progressBar1.PerformStep();
             foreach (var item in listBoxImage.Items)
             {
-                labelMessage.Text = "正在处理：" + item.ToString() + " ...";
+                labelMessage.Text = "正在处理：" + Path.GetFileName(item.ToString()) + " ...";
                 sw.WriteLine(DateTime.Now + "正在压缩图片：" + item.ToString());
                 sw.Flush();
                 try
@@ -166,6 +175,8 @@ namespace Compressor
             sw.WriteLine(DateTime.Now + "压缩图片失败个数：" + imageErrorCount);
             sw.Flush();
 
+            ButtonStart.Text = "开始";
+            ButtonStart.Enabled = true;
             string message = "全部处理完成！";
             MessageBox.Show(message);
             labelMessage.Text = message;
@@ -173,6 +184,12 @@ namespace Compressor
             log.Close();
         }
 
+        /// <summary>
+        /// 视频图片压缩核心代码
+        /// </summary>
+        /// <param name="resultCatalog"></param>
+        /// <param name="srcFileName"></param>
+        /// <param name="type"></param>
         private void CompressorProcess(string resultCatalog, string srcFileName, int type)
         {
             p = new Process();
@@ -262,12 +279,11 @@ namespace Compressor
 
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
-
-        }
-
+        /// <summary>
+        /// 获取CPU线程数等
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Form1_Load(object sender, EventArgs e)
         {
             int processorCount = Environment.ProcessorCount;
@@ -276,5 +292,52 @@ namespace Compressor
                 comboBoxProcessor.Items.Add(i);
             }
         }
+
+        /// <summary>
+        /// 文件大小限制框输入为数字
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textBoxNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int key = e.KeyChar;
+            if ((key < '0' || key > '9') && key != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        /// <summary>
+        /// 过滤视频文件大小
+        /// </summary>
+        private void filterVideoList() {
+            listBoxVideo.Items.Clear();
+
+            long minSize = 0;
+            if (textBoxMinSize.Text != "") minSize = long.Parse(textBoxMinSize.Text);
+            long maxSize = 999999;
+            if (textBoxMaxSize.Text != "") maxSize = long.Parse(textBoxMaxSize.Text);
+            foreach (string file in videoList)
+            {
+                FileInfo fileInfo = new FileInfo(file);
+                double fileSize = (double)fileInfo.Length / 1024 / 1024;
+
+                if ( fileSize > minSize && fileSize <= maxSize)
+                {
+                    listBoxVideo.Items.Add(file);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 文件大小限制框数字改变
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textBoxSize_TextChanged(object sender, EventArgs e)
+        {
+            filterVideoList();
+        }
+      
     }
 }
